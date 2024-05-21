@@ -1,11 +1,10 @@
-Belajar membuat aplikasi backend menggunakan node js dan express js
+# BELAJAR MEMBUAT APLIKASI BACKEND NODEJS DAN EXPRESS
+## AUTHOR
 
-author
+Nama: 
 
-    Nama :
-    
-    Taufan Ali
-    
-    NIM :
+Taufan Ali
 
-    2215016135
+NIM: 
+
+2215016135
