@@ -1,6 +1,6 @@
-#Belajar membuat aplikasi backend menggunakan node js dan express js
+Belajar membuat aplikasi backend menggunakan node js dan express js
 
-##author
+author
     Nama :
     
     Taufan Ali
