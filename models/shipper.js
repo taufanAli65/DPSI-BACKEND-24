@@ -1,19 +1,20 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./index');
 
-const Category = sequelize.define('Category', {
-  categoryID: {
+const Shipper = sequelize.define('Shipper', {
+  shipperID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  categoryName: {
+  shipperName: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  description: {
-    type: DataTypes.TEXT
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 });
 
-module.exports = Category;
+module.exports = Shipper;
