@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./index');
-const Category = require('./category'); // Impor model Category
+const Category = require('./category');
+const Supplier = require('./supplier');
 const Product = sequelize.define('Product', {
     productID: {
         type: DataTypes.INTEGER,
@@ -13,7 +14,11 @@ const Product = sequelize.define('Product', {
     },
     supplierID: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: Supplier,
+            key: 'supplierID'
+        }
     },
     categoryID: {
         type: DataTypes.INTEGER,
@@ -34,8 +39,12 @@ const Product = sequelize.define('Product', {
 }, {
  timestamps: false
 });
-// Definisikan relasi antara Product dan Category
+//Relasi antara Product dan Category
 Product.belongsTo(Category, { foreignKey: 'categoryID' });
 Category.hasMany(Product, { foreignKey: 'categoryID' });
+
+//Relasi antara Product dan Supplier
+Product.belongsTo(Supplier, {foreignKey:'supplierID'});
+Supplier.hasMany(Product, {foreignKey:'productID'});
 
 module.exports = Product
