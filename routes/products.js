@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/product');
+const {Product} = require('../models');
 const { authenticate, authorize } = require('../middleware/auth');
 
 // Endpoint untuk menambahkan produk baru

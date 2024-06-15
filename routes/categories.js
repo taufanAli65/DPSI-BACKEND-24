@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../models/category'); // Impor model Category
+const {Category} = require('../models');
 
 // Endpoint untuk menambahkan kategori baru
 router.post('/', async (req, res, next) => {
   try {
     const { categoryName, description } = req.body;
     const newCategory = await Category.create({ categoryName, description });
+    res.json(`New Category Added, Category : ${categoryName}`);
     res.status(201).json(newCategory);
   } catch (err) {
     next(err);
