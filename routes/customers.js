@@ -1,25 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const {Customer} = require('../models');
-const { authenticate } = require('../middleware/auth');
+const { authenticate, authorize } = require('../middleware/auth');
+
+//untuk menambah Customer baru
+router.post('/', authenticate, authorize(['admin']), async (req, res, next) => {
+    try {
+      const { customerName, contactName, address, city, postalCode, country } = req.body;
+      const newCustomer = await Customer.create({ customerName, contactName, address, city, postalCode, country });
+      res.status(201).json(newCustomer);
+      res.json("Customer Added Successfully")
+    } catch (err) {
+      next(err);
+    }
+});
 
 //Untuk menampilkan semua Customer
 router.get('/', authenticate, async (req, res, next) => {
     try {
       const customers = await Customer.findAll();
       res.json(customers);
-    } catch (err) {
-      next(err);
-    }
-});
-
-//untuk menambah Customer baru
-router.post('/', authenticate, authorize(['admin']), async (req, res, next) => {
-    try {
-      const { customerName, contactName, address, city, postalCode, country } = req.body;
-      const newCustomer = await Product.create({ customerName, contactName, address, city, postalCode, country });
-      res.status(201).json(newCustomer);
-      res.json("Customer Added Successfully")
     } catch (err) {
       next(err);
     }

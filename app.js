@@ -8,7 +8,8 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productsRouter = require("./routes/products");
 var categoriesRouter = require('./routes/categories');
-var orderRouter = require("./routes/order")
+var orderRouter = require("./routes/order");
+var customerRouter = require("./routes/customers");
 var authRouter = require('./routes/auth');
 var { sequelize } = require('./models');
 
@@ -27,6 +28,7 @@ app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/auth', authRouter);
 app.use('/order', orderRouter);
+app.use('/customer', customerRouter);
 
 sequelize.sync()
     .then(() => {
