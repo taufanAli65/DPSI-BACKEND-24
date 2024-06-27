@@ -13,6 +13,7 @@ var customersRouter = require("./routes/customers");
 var employeesRouter = require("./routes/employees");
 var orderDetailsRouter = require("./routes/orderDetails");
 var shippersRouter = require("./routes/shippers");
+var suppliersRouter = require("./routes/suppliers");
 
 var authRouter = require('./routes/auth');
 var { sequelize } = require('./models');
@@ -34,8 +35,9 @@ app.use('/auth', authRouter);
 app.use('/orders', ordersRouter);
 app.use('/customers', customersRouter);
 app.use('/employees', employeesRouter);
-app.use('/orderDetailsRouter', orderDetailsRouter);
+app.use('/orderDetails', orderDetailsRouter);
 app.use('/shippers', shippersRouter);
+app.use('/suppliers', suppliersRouter);
 
 sequelize.sync()
     .then(() => {
