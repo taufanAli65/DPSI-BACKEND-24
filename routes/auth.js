@@ -32,7 +32,7 @@ router.post('/login', async (req, res, next) => {
       'your_jwt_secret',
       { expiresIn: '1h' }
     );
-    res.json({ token });
+    res.json({ token }); //debug
   } catch (err) {
     next(err);
   }
